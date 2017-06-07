@@ -12,6 +12,7 @@
     <title>Profile</title>
 </head>
 <body>
+<h1>Logged in!</h1>
 
 </body>
 </html>
