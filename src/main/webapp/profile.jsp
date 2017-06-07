@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: renecortez
   Date: 6/7/17
-  Time: 11:24 AM
+  Time: 11:27 AM
   To change this template use File | Settings | File Templates.
 --%>
 
@@ -10,14 +10,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title><%= "some title" %></title>
+    <title>Title</title>
 </head>
 <body>
-    <c:if test="true">
-        <h1>Variable names should be very descriptive</h1>
-    </c:if>
-    <c:if test="false">
-        <h1>single letter variable names are good</h1>
-    </c:if>
+
 </body>
 </html>
