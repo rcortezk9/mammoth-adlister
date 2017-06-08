@@ -19,6 +19,7 @@
 <div class="container">
 <%-- View part of the MVC --%>
     <h1>Here are all your Ads!</h1>
+    <h2>Hi, ${sessionScope.get("username")}</h2>
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
             <h2>${ad.title}</h2>

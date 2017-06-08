@@ -20,9 +20,10 @@ public class LoginServlet extends HttpServlet {
         boolean validAttempt = username.equals("admin") && password.equals("password");
 
         if(validAttempt){
+            request.getSession().setAttribute("username", username);//keep the user name
             response.sendRedirect("/profile");//servlet
         } else {
-            doGet(request, response); //jsp
+            request.getRequestDispatcher("/login.jsp").forward(request, response); //jsp also the doGet needs to be at top for this to work
         }
     }
 
