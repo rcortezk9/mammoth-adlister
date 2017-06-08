@@ -6,7 +6,7 @@
     </jsp:include>
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+    <jsp:include page="/WEB-INF/partials/logoutNavbar.jsp" />
 
     <div class="container">
         <h1>Viewing your profile.</h1>
