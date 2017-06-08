@@ -1,0 +1,6 @@
+What was done on the exercise
+ Show the login form in the `doGet` method of `LoginServlet`
+ Move the logic to authenticate a user to the `doPost` method
+ Create a view to show all the ads ads/index.jsp
+ Retrieve all the ads using the DAO, and pass them to the view (`ShowAdsServlet`)
+ Modify the view to show the ads with a nice format
