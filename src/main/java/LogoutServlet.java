@@ -8,9 +8,11 @@ import java.io.IOException;
 /**
  * Created by renecortez on 6/8/17.
  */
-@WebServlet(name = "LogoutServlet", urlPatterns = "/")
+@WebServlet(name = "LogoutServlet", urlPatterns = "/logout")
 public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().removeAttribute("username");
+        request.getSession().invalidate();
+        response.sendRedirect("/login");
     }
 }
