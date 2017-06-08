@@ -11,6 +11,7 @@
 
 <div class="container">
     <h1>Here Are all the ads!</h1>
+    <h2>Hi, ${sessionScope.get("username")}</h2>
 
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
