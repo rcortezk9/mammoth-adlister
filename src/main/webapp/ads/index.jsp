@@ -17,7 +17,7 @@
 <jsp:include page="/partials/navbar.jsp" />
 
 <div class="container">
-
+<%-- View part of the MVC --%>
     <h1>Here are all your Ads!</h1>
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
