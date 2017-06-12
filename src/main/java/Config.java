@@ -7,7 +7,7 @@ public class Config {
     private String password;
 
     public Config() {
-        url = "jdbc:mysql://localhost/adlister_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC\"";
+        url = "jdbc:mysql://localhost/adlister_db?serverTimezone=UTC";
         username = "rene";
         password = "rene123";
     }
