@@ -12,13 +12,17 @@ import java.sql.*;
 public class MySQLUsersDao implements Users {
     private Connection connection = null;
 
-    public MySQLUsersDao(Config config) throws SQLException {//might use inheritance
-        DriverManager.registerDriver(new Driver());
-        connection = DriverManager.getConnection(
-                config.getUrl(),
-                config.getUsername(),
-                config.getPassword()
-        );
+    public MySQLUsersDao(Config config)  {//might use inheritance
+        try {
+            DriverManager.registerDriver(new Driver());
+            connection = DriverManager.getConnection(
+                    config.getUrl(),
+                    config.getUsername(),
+                    config.getPassword()
+            );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
