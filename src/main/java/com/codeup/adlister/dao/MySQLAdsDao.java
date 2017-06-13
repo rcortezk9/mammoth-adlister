@@ -28,31 +28,42 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public List<Ad> all() {
-        Statement stmt = null;
+        Statement statement = null;
+        List<Ad> ads = new ArrayList<>();
         try {
-            stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM ads");
-            return createAdsFromResults(rs);
+            statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM ads");
+            while (resultSet.next()) {
+                ads.add(new Ad(
+                        resultSet.getLong("id"),
+                        resultSet.getLong("user_id"),
+                        resultSet.getString("title"),
+                        resultSet.getString("description")
+                ));
+            }
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving all ads.", e);
+            e.printStackTrace();
         }
+        return ads;
     }
     @Override
     public Long insert(Ad ad) {
-        String sql = "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)";
+        String insert = "INSERT INTO ads (title, description, user_id) VALUES (?, ?, ?)";
         long id = 0;
         try {
-            PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            stmt.setLong(1, ad.getUserId());
-            stmt.setString(2, ad.getTitle());
-            stmt.setString(3, ad.getDescription());
-            stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-            return rs.getLong(1);
+            PreparedStatement statement = connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, ad.getTitle());
+            statement.setString(2, ad.getDescription());
+            statement.setLong(3, ad.getUserId());
+            statement.executeUpdate();
+            ResultSet resultSet = statement.getGeneratedKeys();
+            resultSet.next();
+            id = resultSet.getLong(1);
+            ad.setId(id);
         } catch (SQLException e) {
-            throw new RuntimeException("Error creating a new ad.", e);
+            e.printStackTrace();
         }
+        return id;
     }
 
 //    private String createInsertQuery(Ad ad) {
