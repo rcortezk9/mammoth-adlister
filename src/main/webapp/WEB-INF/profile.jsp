@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -9,8 +10,8 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container">
-        <!-- todo use c:out here -->
-        <h1>Welcome, <c:out value="${sessionScope.user}" />!</h1>
+        <!-- use c:out here -->
+        <h1>Welcome, <c:out value="${user.username}" />!</h1>
     </div>
 
 </body>
