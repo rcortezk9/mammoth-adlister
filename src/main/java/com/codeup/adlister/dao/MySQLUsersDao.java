@@ -1,12 +1,9 @@
 package com.codeup.adlister.dao;
 
-import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
-import com.mysql.cj.api.jdbc.Statement;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
-import java.util.List;
 
 /**
  * Created by renecortez on 6/12/17.
@@ -25,11 +22,10 @@ public class MySQLUsersDao implements Users {
 
     }
 
-
     @Override
     public Long insert(User user) {
         String sql = "INSERT INTO users(username, email, PASSWORD) VALUES (?, ?, ?)";
-        long id = 0;
+
         try {
             PreparedStatement stmt = connection.prepareStatement(sql, java.sql.Statement.RETURN_GENERATED_KEYS);
             stmt.setLong(1, Long.parseLong(user.getUsername()));
@@ -45,8 +41,19 @@ public class MySQLUsersDao implements Users {
     }
 
     @Override
-    public User findByUsername(String username) {
-        return null;
+    public String findByUsername(String username) {
+        String sql = "SELECT * FROM users WHERE name = ?";
+        PreparedStatement stmt;
+        try {
+            stmt = connection.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.executeQuery();
+            ResultSet rs = stmt.getResultSet();
+            rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return sql;
     }
 
 

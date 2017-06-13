@@ -1,4 +1,4 @@
-package com.codeup.adlister.dao;
+package com.codeup.adlister.dao;//config.java must in the same package
 
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
@@ -28,11 +28,11 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public List<Ad> all() {
-        Statement statement = null;
+        Statement stmt = null;
         List<Ad> ads = new ArrayList<>();
         try {
-            statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM ads");
+            stmt = connection.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT * FROM ads");
             while (resultSet.next()) {
                 ads.add(new Ad(
                         resultSet.getLong("id"),
@@ -45,12 +45,13 @@ public class MySQLAdsDao implements Ads {
             e.printStackTrace();
         }
         return ads;
-    }
+    }//no user input
     @Override
     public Long insert(Ad ad) {
         String insert = "INSERT INTO ads (title, description, user_id) VALUES (?, ?, ?)";
         long id = 0;
         try {
+            //Todo: replace this statment with a prepared one.
             PreparedStatement statement = connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, ad.getTitle());
             statement.setString(2, ad.getDescription());
@@ -66,14 +67,14 @@ public class MySQLAdsDao implements Ads {
         return id;
     }
 
-//    private String createInsertQuery(Ad ad) {
-//        return "INSERT INTO ads(user_id, title, description) VALUES "
-//            + "(" + ad.getUserId() + ", "
-//            + "'" + ad.getTitle() +"', "
-//            + "'" + ad.getDescription() + "')";
-//    }
+    private String createInsertQuery(Ad ad) {
+        return "INSERT INTO ads(user_id, title, description) VALUES "
+            + "(" + ad.getUserId() + ", "
+            + "'" + ad.getTitle() +"', "
+            + "'" + ad.getDescription() + "')";
+    }
 
-    private Ad extractAd(ResultSet rs) throws SQLException {
+    private Ad extractAd(ResultSet rs) throws SQLException {//?
         return new Ad(
             rs.getLong("id"),
             rs.getLong("user_id"),
