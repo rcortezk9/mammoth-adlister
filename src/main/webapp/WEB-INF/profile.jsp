@@ -10,7 +10,7 @@
 
     <div class="container">
         <!-- todo use c:out here -->
-        <h1>Welcome, ${sessionScope.user}!</h1>
+        <h1>Welcome, <c:out value="${sessionScope.user}" />!</h1>
     </div>
 
 </body>

@@ -15,9 +15,9 @@
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
 
-            <!-- Todo: replace -->
-            <h2>${ad.title}</h2>
-            <p>${ad.description}</p>
+            <!-- replace -->
+            <h2><c:out value="${ad.title}" /></h2>
+            <p><c:out value="${ad.description}" /></p>
         </div>
     </c:forEach>
 </div>
