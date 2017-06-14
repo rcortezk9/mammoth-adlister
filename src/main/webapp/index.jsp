@@ -17,14 +17,14 @@
                 <div class="col-md-6">
                     <h3>Parent</h3>
                     <p>Welcome to our homeschooler's solution where parents don't know it all can connect with specialize teacher</p>
-                    <button>new user</button>
-                    <button>login</button>
+                    <button>login</button><br>
+                    <a href="#">Register as a parent</a>
                 </div>
                 <div class="col-md-6">
                     <h3>Teacher</h3>
                     <p>Teachers that will help where parents can't on all educational subjects</p>
-                    <button>new user</button>
-                    <button>login</button>
+                    <button>login</button><br>
+                    <a href="#">Register as a Teacher</a>
                 </div>
             </div>
         </div>
