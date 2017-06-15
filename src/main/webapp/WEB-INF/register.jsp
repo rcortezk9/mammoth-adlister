@@ -18,6 +18,11 @@
                 <label for="email">Email</label>
                 <input id="email" name="email" class="form-control" type="text">
             </div>
+            <select>
+                <option id="parent">Parent</option>
+                <option id="teacher">Teacher</option>
+                <br>
+            </select>
             <div class="form-group">
                 <label for="password">Password</label>
                 <input id="password" name="password" class="form-control" type="password">
